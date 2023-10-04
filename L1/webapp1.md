@@ -77,4 +77,17 @@ then click on create route table
 ### Internet Gateway(IGW)
 An internet gateway is a virtual router that connects a VPC to the internet. To create a new internet gateway specify the name for the gateway below.
 
+While creating a IGW we are using these paramenter:
+Name: AppIGW
 
+(optional)
+add tag :
+Give key and value to distinguish.(put same key and value which we use in vpc)
+then click on create IGW
+
+After completing these steps: 
+- We  will attach this IGW( AppIGW ) with VPC(AppVPC) and then we go to route table and then we will select PublicRoute1 table.
+- Then in bottom we can see routes 
+- Selcet that and then click edit route
+- Add IGW (AppIGW) into that route table  while giving destination 0.0.0.0/0(means everywhere)
+- Go to subnet and select that subnet which we created (PublicSubnet1)
