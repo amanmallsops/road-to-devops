@@ -90,4 +90,5 @@ After completing these steps:
 - Then in bottom we can see routes 
 - Selcet that and then click edit route
 - Add IGW (AppIGW) into that route table  while giving destination 0.0.0.0/0(means everywhere)
-- Go to subnet and select that subnet which we created (PublicSubnet1)
+- Go to subnet and select that subnet which we created (PublicSubnet1) and then click on route table and then in route we select are Subnet(Publicsubnet1)
+  
