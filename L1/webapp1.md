@@ -92,6 +92,13 @@ After completing these steps:
 - Add IGW (AppIGW) into that route table  while giving destination 0.0.0.0/0(means everywhere)
 - Go to subnet and select that subnet which we created (PublicSubnet1) and then click on route table and then in route we select are Subnet(Publicsubnet1)
 
-### Security Group
+### Security Group(SG)
 
 A security group acts as a virtual firewall that controls the traffic for one or more instances. When you launch an instance, you can specify one or more security groups
+
+While we create a SG we will give these paramenter:
+Security group name: AppSG
+Description: what we are using for
+VPC: slect your VPC(AppVPC)
+add Inbound rule and Outbond rule accrding to your prefrences 
+
