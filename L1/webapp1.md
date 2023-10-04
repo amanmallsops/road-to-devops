@@ -1,7 +1,7 @@
 # Building a web App using AWS console in single instance.
 **Contents**
   - [1. Deploy a networking stack](#2-deploy-a-networking-stack)
-  - [2. Create an Instance and SSH into your Instance](#3-create-an-instance and ssh-into-your-instance)
+  - [2. Create an Instance and SSH into your Instance](#3-create-an-instance-and-ssh-into-your-instance)
   - [3. Install the Apache Web Server to run PHP](#5-install-the-apache-web-server-to-run-php)
   - [4. Install PHP to run WordPress](#6-install-php-to-run-wordpress)
   - [5. Install MySQL for adding database](#7-install-mysql-for-adding-database)
