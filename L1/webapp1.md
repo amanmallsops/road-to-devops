@@ -102,3 +102,4 @@ Description: what we are using for
 VPC: slect your VPC(AppVPC)
 add Inbound rule and Outbond rule accrding to your prefrences 
 
+and then create this SG
