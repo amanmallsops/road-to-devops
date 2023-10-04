@@ -22,8 +22,33 @@ resource using:
 - IGW
 - security group
 
-### VPC
+**VPC**
 
-While creating VPC we taking these parameter 
+While creating VPC we taking these parameter
 Name: AppVPC
-CIDR: 10.10.0.0
+IPv4 CIDR block:(select) IPv4 CIDR manual input 
+- to give CIDR manually 
+IPv4 CIDR: 10.10.0.0/16
+IPv6 CIDF block: (select) No IPv6 CIDR block
+- it's totally depend upon weather you want IPv6 ip or not   
+Tenancy:(select) default
+
+(optional)
+add tag :
+Give key and value to distinguish.
+then click on create vpc
+
+**Subnet**
+
+While creating Subnet we have to chose VPC Select the same VPC we created earlier(AppVPC)
+Then give following paramenter:
+subnet name: PublicSubnet1 
+- note: just by give name publicsubnet in subnet it doesnot make it public
+Availability Zone: (do not leave it on no prefernece its a good practice )
+IPv4 VPC CIDR block: 10.10.0.0/16 (it will be automatically dsiplay)
+Pv4 subnet CIDR block: 10.10.1.0/24
+
+(optional)
+add tag :
+Give key and value to distinguish.(put same key and value which we use in vpc)
+then click on create subnet
