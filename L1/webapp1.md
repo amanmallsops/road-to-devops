@@ -107,100 +107,100 @@ and then create this SG
 
 ## Create instance using the same networking stack 
 
-#installing (lamp) dependencies:
+# installing (lamp) dependencies:
 
-##Apache2
->> cat /etc/*release*  (checking version of ubuntu -> 22.04)
+## Apache2
+- cat /etc/*release*  (checking version of ubuntu -> 22.04)
 
->> sudo apt update
+- sudo apt update
 
->> sudo apt install apache2
+- sudo apt install apache2
 
 note: check SG  port 80 and 443 
 
->> http://your_server_ip
+- http://your_server_ip
 
-##Mysql 8.0 (latest)
->>sudo apt install mysql-server-8.0
+## Mysql 8.0 (latest)
+- sudo apt install mysql-server-8.0
 
->> sudo mysql  -> it will not ask for password
+- sudo mysql  -> it will not ask for password
 
->> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Database';  (change password according to you (Database))
+- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Database';  (change password according to you (Database))
 
->> exit
+- exit
 
  >> mysql -u root -p  (enter password )
 
  >> exit
 
- ##PHP
->> sudo apt install php libapache2-mod-php php-mysql
+## PHP
+- sudo apt install php libapache2-mod-php php-mysql
 
 note: maybe it will ask for reboot so do that
 
->> php -v
+- php -v
 
 *****************************************************************
 
 
 
-#Insatlling wordpress
+# Insatlling wordpress
 
-##Creating a Mysql database and user for wordpress
+## Creating a Mysql database and user for wordpress
 
->> mysql -u root -p
+- mysql -u root -p
 
->> CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+- CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 note: UTF-8 is a variable-width encoding that can represent every character in the Unicode character set and it support a maximum of 3bytes and utf8_unicode_ci means it will supports contractions and ignorable characters.
 
 
->> CREATE USER 'wordpressuser'@'%' IDENTIFIED WITH mysql_native_password BY 'Wordpress';
+- CREATE USER 'wordpressuser'@'%' IDENTIFIED WITH mysql_native_password BY 'Wordpress';
 
->> GRANT ALL ON wordpress.* TO 'wordpressuser'@'%';
+- GRANT ALL ON wordpress.* TO 'wordpressuser'@'%';
 
 note: % means all around acces. 
 
->> FLUSH PRIVILEGES;
+- FLUSH PRIVILEGES;
 
->> SHOW GRANTS FOR 'wordpressuser'@'%';
+- SHOW GRANTS FOR 'wordpressuser'@'%';
 
 note: to check your user you created
 
->>exit;
+- exit;
 
 
 
 
-##Installing additional php extention
+## Installing additional php extention
 
->> sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip
+- sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip
 
->> sudo systemctl restart apache2
+- sudo systemctl restart apache2
 
 note: restart to load thoes additional plugin
 
->> sudo systemctl status apache2
+- sudo systemctl status apache2
 
 
 
 
->> vim /etc/apache2/sites-available/000-default.conf
+- vim /etc/apache2/sites-available/000-default.conf
 change line in below
 => in place of
->>  DocumentRoot /var/www/html => DocumentRoot /var/www/wordpress 
+-  DocumentRoot /var/www/html => DocumentRoot /var/www/wordpress 
 
 
-##Enabling the Rewrite module
+## Enabling the Rewrite module
 it will give wordpress to use permalink feature like for eg:
 http://example.com/2012/post-name/
 http://example.com/2012/12/30/post-name
 
 note: The a2enmod command calls a script that enables the specified module within the Apache configuration.
 
->> sudo a2enmod rewrite
+- sudo a2enmod rewrite
 
->> sudo systemctl restart apache2 
+- sudo systemctl restart apache2 
 
 
 
@@ -208,34 +208,23 @@ note: The a2enmod command calls a script that enables the specified module withi
 
 ## Enabling the Changes
 
->> sudo apache2ctl configtest  -> testing to make sure that it's not showing any  syntax error
-
-**optinal**
-to surpass warning we can add ServerName  directive to your main (global) Apache configuration file at /etc/apache2/apache2.conf
-
- The ServerName can be your server’s domain or IP address.
-
-****
+- sudo apache2ctl configtest  -> testing to make sure that it's not showing any  syntax error
 
 
 
+## Downloading Wordpress
 
+- cd /tmp
 
+- curl -O https://wordpress.org/latest.tar.gz  -> downloading  wordpress file
 
+- tar xzvf latest.tar.gz -> unzip the wordpress file
 
-##Downloading Wordpress
+- cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php  -> Creating wp-config.php and copying content from sample file
 
->> cd /tmp
+- mkdir /tmp/wordpress/wp-content/upgrade -> create the upgrade directory so that WordPress won’t run into permissions issues when trying to do this on its own following an update to its software
 
->> curl -O https://wordpress.org/latest.tar.gz  -> downloading  wordpress file
-
->> tar xzvf latest.tar.gz -> unzip the wordpress file
-
->> cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php  -> Creating wp-config.php and copying content from sample file
-
->> mkdir /tmp/wordpress/wp-content/upgrade -> create the upgrade directory so that WordPress won’t run into permissions issues when trying to do this on its own following an update to its software
-
->> sudo cp -a /tmp/wordpress/. /var/www/wordpress
+- sudo cp -a /tmp/wordpress/. /var/www/wordpress
 
 
 
@@ -263,5 +252,7 @@ www-data is the user that apache server run as and  will need to be able to read
 
 >> curl -s https://api.wordpress.org/secret-key/1.1/salt/ -> secure values from the WordPress secret key generator
 
->> sudo vim var/www/wordpress/wp-config.php -> config file cange screte key and data base, data base user and passowrd.
+>> sudo vim var/www/wordpress/wp-config.php
+#sudo vim var/www/wordpress/wp-config.php 
+>> config file cange screte key and data base, data base user and passowrd.
 ****************************
