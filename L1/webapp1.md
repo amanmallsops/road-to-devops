@@ -184,32 +184,8 @@ note: restart to load thoes additional plugin
 
 
 
-##comment don't impliment##
-	##Adjusting Apache's config to allow for .htaccess Overrides and Rewrite
-
-	note: work with .htaccess -> so that Apache can handle configuration changes on a per-directory basis. and it is by default disable
-
-	To allow .htaccess files, you need to set the AllowOverride directive within a Directory block pointing to your document root. Add the following content inside the VirtualHost block in your configuration file, making sure to use the correct web root directory:
 
 
-
-
-	###Steps to allow it 
-
-	>> sudo vim /etc/apache2/sites-available/wordpress.conf
-
-	****add these line****
-
-	<VirtualHost *:80>
-	. . .
-	    <Directory /var/www/wordpress/>
-	        AllowOverride All
-	    </Directory>
-	. . .
-	</VirtualHost>
-
-	********
-#####
 
 >> cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf_bkp
 >> rm -rf /etc/apache2/sites-available/000-default.conf
@@ -256,8 +232,6 @@ to surpass warning we can add ServerName  directive to your main (global) Apache
 >> curl -O https://wordpress.org/latest.tar.gz  -> downloading  wordpress file
 
 >> tar xzvf latest.tar.gz -> unzip the wordpress file
-
-	##comment_don't impliment#>> touch /tmp/wordpress/.htaccess -> creating dummy .htaccess file so that this will be available for WordPress to use later.##
 
 >> cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php  -> Creating wp-config.php and copying content from sample file
 
