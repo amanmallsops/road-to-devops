@@ -103,3 +103,193 @@ VPC: slect your VPC(AppVPC)
 add Inbound rule and Outbond rule accrding to your prefrences 
 
 and then create this SG
+
+
+## Create instance using the same networking stack 
+
+#installing (lamp) dependencies:
+
+##Apache2
+>> cat /etc/*release*  (checking version of ubuntu -> 22.04)
+
+>> sudo apt update
+
+>> sudo apt install apache2
+
+note: check SG  port 80 and 443 
+
+>> http://your_server_ip
+
+##Mysql 8.0 (latest)
+>>sudo apt install mysql-server-8.0
+
+>> sudo mysql  -> it will not ask for password
+
+>> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Database';  (change password according to you (Database))
+
+>> exit
+
+ >> mysql -u root -p  (enter password )
+
+ >> exit
+
+ ##PHP
+>> sudo apt install php libapache2-mod-php php-mysql
+
+note: maybe it will ask for reboot so do that
+
+>> php -v
+
+*****************************************************************
+
+
+
+#Insatlling wordpress
+
+##Creating a Mysql database and user for wordpress
+
+>> mysql -u root -p
+
+>> CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+note: UTF-8 is a variable-width encoding that can represent every character in the Unicode character set and it support a maximum of 3bytes and utf8_unicode_ci means it will supports contractions and ignorable characters.
+
+
+>> CREATE USER 'wordpressuser'@'%' IDENTIFIED WITH mysql_native_password BY 'Wordpress';
+
+>> GRANT ALL ON wordpress.* TO 'wordpressuser'@'%';
+
+note: % means all around acces. 
+
+>> FLUSH PRIVILEGES;
+
+>> SHOW GRANTS FOR 'wordpressuser'@'%';
+
+note: to check your user you created
+
+>>exit;
+
+
+
+
+##Installing additional php extention
+
+>> sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip
+
+>> sudo systemctl restart apache2
+
+note: restart to load thoes additional plugin
+
+>> sudo systemctl status apache2
+
+
+
+##comment don't impliment##
+	##Adjusting Apache's config to allow for .htaccess Overrides and Rewrite
+
+	note: work with .htaccess -> so that Apache can handle configuration changes on a per-directory basis. and it is by default disable
+
+	To allow .htaccess files, you need to set the AllowOverride directive within a Directory block pointing to your document root. Add the following content inside the VirtualHost block in your configuration file, making sure to use the correct web root directory:
+
+
+
+
+	###Steps to allow it 
+
+	>> sudo vim /etc/apache2/sites-available/wordpress.conf
+
+	****add these line****
+
+	<VirtualHost *:80>
+	. . .
+	    <Directory /var/www/wordpress/>
+	        AllowOverride All
+	    </Directory>
+	. . .
+	</VirtualHost>
+
+	********
+#####
+
+>> cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf_bkp
+>> rm -rf /etc/apache2/sites-available/000-default.conf
+>> cp /etc/apache2/sites-available/000-default.conf_bkp /etc/apache2/sites-available/wordpress.conf
+
+
+
+##Enabling the Rewrite module
+it will give wordpress to use permalink feature like for eg:
+http://example.com/2012/post-name/
+http://example.com/2012/12/30/post-name
+
+note: The a2enmod command calls a script that enables the specified module within the Apache configuration.
+
+>> sudo a2enmod rewrite
+
+>> sudo systemctl restart apache2 
+
+
+
+
+
+## Enabling the Changes
+
+>> sudo apache2ctl configtest  -> testing to make sure that it's not showing any  syntax error
+
+**optinal**
+to surpass warning we can add ServerName  directive to your main (global) Apache configuration file at /etc/apache2/apache2.conf
+
+ The ServerName can be your server’s domain or IP address.
+
+****
+
+
+
+
+
+
+
+##Downloading Wordpress
+
+>> cd /tmp
+
+>> curl -O https://wordpress.org/latest.tar.gz  -> downloading  wordpress file
+
+>> tar xzvf latest.tar.gz -> unzip the wordpress file
+
+	##comment_don't impliment#>> touch /tmp/wordpress/.htaccess -> creating dummy .htaccess file so that this will be available for WordPress to use later.##
+
+>> cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php  -> Creating wp-config.php and copying content from sample file
+
+>> mkdir /tmp/wordpress/wp-content/upgrade -> create the upgrade directory so that WordPress won’t run into permissions issues when trying to do this on its own following an update to its software
+
+>> sudo cp -a /tmp/wordpress/. /var/www/wordpress
+
+
+
+
+
+##Configuring the WordPress Directory
+
+
+
+### adjusting the Ownership and permission to www-data
+
+www-data is the user that apache server run as and  will need to be able to read and write WordPress files in order to serve the website and perform automatic updates. 
+
+>> sudo chown -R www-data:www-data /var/www/wordpress  -> sets every directory in wordpress with permissions to 750
+
+>> sudo find /var/www/wordpress/ -type d -exec chmod 750 {} \; 
+
+>> sudo find /var/www/wordpress/ -type f -exec chmod 640 {} \; -> finds each file within the directory and sets their permissions to 640
+
+
+
+- To adjust some secret keys to provide a level of security for your installation. 
+- WordPress provides a secure generator for these values so that you do not have to try to come up with good values on your own. 
+- These are only used internally, so it won’t hurt usability to have complex, secure values here.
+
+>> curl -s https://api.wordpress.org/secret-key/1.1/salt/ -> secure values from the WordPress secret key generator
+
+>> sudo vim var/www/wordpress/wp-config.php -> config file cange screte key and data base, data base user and passowrd.
+****************************
