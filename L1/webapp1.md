@@ -185,12 +185,10 @@ note: restart to load thoes additional plugin
 
 
 
-
-
->> cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf_bkp
->> rm -rf /etc/apache2/sites-available/000-default.conf
->> cp /etc/apache2/sites-available/000-default.conf_bkp /etc/apache2/sites-available/wordpress.conf
-
+>> vim /etc/apache2/sites-available/000-default.conf
+change line in below
+=> in place of
+>>  DocumentRoot /var/www/html => DocumentRoot /var/www/wordpress 
 
 
 ##Enabling the Rewrite module
