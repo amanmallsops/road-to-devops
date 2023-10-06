@@ -129,9 +129,9 @@ note: check SG  port 80 and 443
 
 - exit
 
- >> mysql -u root -p  (enter password )
+ - mysql -u root -p  (enter password )
 
- >> exit
+ - exit
 
 ## PHP
 - sudo apt install php libapache2-mod-php php-mysql
@@ -159,7 +159,7 @@ note: UTF-8 is a variable-width encoding that can represent every character in t
 
 - GRANT ALL ON wordpress.* TO 'wordpressuser'@'%';
 
-note: % means all around acces. 
+note: "%" means all around acces. 
 
 - FLUSH PRIVILEGES;
 
@@ -230,7 +230,7 @@ note: The a2enmod command calls a script that enables the specified module withi
 
 
 
-##Configuring the WordPress Directory
+## Configuring the WordPress Directory
 
 
 
