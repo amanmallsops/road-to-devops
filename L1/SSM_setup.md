@@ -7,7 +7,7 @@ Attach role to ec2
 
 > systemctl status  snap.amazon-ssm-agent.amazon-ssm-agent
 
-refres the page you can connect .
+refres the page you can connect.
 
 # 2 approach
 ## uninstall existing ssm agent 
