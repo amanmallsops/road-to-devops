@@ -2,7 +2,9 @@ Attach role to ec2
 
 # 1 approach
 > systemctl status snap.amazon-ssm-agent.amazon-ssm-agent
+
 > systemctl enable snap.amazon-ssm-agent.amazon-ssm-agent
+
 > systemctl status  snap.amazon-ssm-agent.amazon-ssm-agent
 
 refres the page you can connect .
