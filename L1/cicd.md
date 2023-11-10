@@ -145,5 +145,28 @@ It will create few  role automatically but few role for codepipeline have to cre
 ![Screenshot (25)](https://github.com/amanmallsops/road-to-devops/assets/146840696/6f2530e1-412d-4af8-8ebe-120caad76f17)
 ![Screenshot (26)](https://github.com/amanmallsops/road-to-devops/assets/146840696/53b7bbff-996a-492e-8911-10d4e3c38e65)
 ![Screenshot (27)](https://github.com/amanmallsops/road-to-devops/assets/146840696/0ce6787d-6322-464e-b8e4-07e8e0f875b1)
+## Step3: Creating the pipeline 
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/e511793a-0c87-463f-a1a4-11850b97f62e)
+## Step4: adding git hub Source
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/6a5edc8e-9486-4009-a39a-b2efc2d986ba)
+## Step4: Creating Code build and addding it to code pipeline 
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/3958a2a2-a789-43df-b360-aa32aec7c5a1)
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/569c81e7-208e-4af9-bba4-0991baf03a34)
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/a29e5fe8-6337-46af-a6ad-59f4d35065aa)
+Leave the other settings to default and confirm creation.
+Proceed to the next step on CodePipeline creation.
+For now, skip the deploy stage as I will add it manually later, and focus on the CI part.
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/0db99fae-74ac-4dc9-bf41-047863db8167)
 
-
+## Step5: Creating code deploy and adding it to codepipeline
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/16a99908-41e8-43dd-baaf-af62c408cefc)
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/d1c8dd3f-9c3e-4f50-af0a-f93a43857ef8)
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/ce9493d0-31e5-469c-8334-6aeae9fd8eb4)
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/6e38520d-4139-4af0-ae2a-473348813bc3)
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/bd384152-025f-4d9a-9d5f-8c61e76de9cd)
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/cfdfd904-ffb9-4ff9-8cd6-b075227d7cd3)
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/c0bef178-1fd1-405c-ba5a-0307b8a9b6c8)
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/16f7a71b-bc66-4773-8221-70a6d6a30d47)
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/1c86e633-5fd4-44b8-b0a5-d67eff8088da)
+## Step6: After reviewing the data in the Review stage, select Create pipeline.
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/bddde6e7-183f-46ed-b1ec-f4383e56f1d0)
