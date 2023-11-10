@@ -128,3 +128,14 @@ Tool to use to monitored is:
  - to store log we use Amazon s3.
 ### Amazon SNS:
 to get notification
+# Steps to create code pipeline 
+ ## Step 1: create source 
+In this we are choosing git repo and with our application code we added two files (**appspec.yml ** and ** buildspec.yml**) 
+and one folder for script which is used by appspec at time of deployment .
+Appspec.yml is used by code deploy.
+Buildspec.yml is used by codebuild and its not imp to put that file name you can also define that name.
+## Step2 : create IAM  role and attached to their following recourse  
+It will create two  role automatically but one role for codepipeline have to created by yourself.
+ ![Screenshot (27)](https://github.com/amanmallsops/road-to-devops/assets/146840696/378ad57d-839c-423b-9573-aba69a22d661)
+
+
