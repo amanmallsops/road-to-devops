@@ -136,6 +136,12 @@ Appspec.yml is used by code deploy.
 Buildspec.yml is used by codebuild and its not imp to put that file name you can also define that name.
 ## Step2 : create IAM  role and attached to their following recourse  
 It will create two  role automatically but one role for codepipeline have to created by yourself.
- ![Screenshot (27)](https://github.com/amanmallsops/road-to-devops/assets/146840696/378ad57d-839c-423b-9573-aba69a22d661)
+
+![Screenshot (22)](https://github.com/amanmallsops/road-to-devops/assets/146840696/0effd037-57a0-4b44-bf6d-25b330fdb694)
+![Screenshot (23)](https://github.com/amanmallsops/road-to-devops/assets/146840696/61cbc64a-ff1f-4720-8d88-b60e9e3285f3)
+![Screenshot (24)](https://github.com/amanmallsops/road-to-devops/assets/146840696/63aa6b94-d6fc-4248-ae2b-9f73a5231273)
+![Screenshot (25)](https://github.com/amanmallsops/road-to-devops/assets/146840696/6f2530e1-412d-4af8-8ebe-120caad76f17)
+![Screenshot (26)](https://github.com/amanmallsops/road-to-devops/assets/146840696/53b7bbff-996a-492e-8911-10d4e3c38e65)
+![Screenshot (27)](https://github.com/amanmallsops/road-to-devops/assets/146840696/0ce6787d-6322-464e-b8e4-07e8e0f875b1)
 
 
