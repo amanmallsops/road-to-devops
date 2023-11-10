@@ -129,6 +129,8 @@ Tool to use to monitored is:
 ### Amazon SNS:
 to get notification
 # Steps to create code pipeline 
+![image](https://github.com/amanmallsops/road-to-devops/assets/146840696/eb05c21d-f4fd-4426-b05e-680e804f95e4)
+
  ## Step 1: create source 
 In this we are choosing git repo and with our application code we added two files (**appspec.yml ** and ** buildspec.yml**) 
 and one folder for script which is used by appspec at time of deployment .
