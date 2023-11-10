@@ -135,7 +135,7 @@ and one folder for script which is used by appspec at time of deployment .
 Appspec.yml is used by code deploy.
 Buildspec.yml is used by codebuild and its not imp to put that file name you can also define that name.
 ## Step2 : create IAM  role and attached to their following recourse  
-It will create two  role automatically but one role for codepipeline have to created by yourself.
+It will create few  role automatically but few role for codepipeline have to created by yourself. and for secret manager we added please check images below
 
 ![Screenshot (22)](https://github.com/amanmallsops/road-to-devops/assets/146840696/0effd037-57a0-4b44-bf6d-25b330fdb694)
 ![Screenshot (23)](https://github.com/amanmallsops/road-to-devops/assets/146840696/61cbc64a-ff1f-4720-8d88-b60e9e3285f3)
